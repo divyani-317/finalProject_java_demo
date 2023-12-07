@@ -11,6 +11,15 @@ public class Order {
     }
 
     public double getTotalAmount() {
-        return pizzas.stream().mapToDouble(Pizza::getPrice).sum();
+        double totalPrice = 0.0;
+        try {
+            for (Pizza pizza : pizzas) {
+                totalPrice += pizza.getPrice();
+            }
+        }
+         catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return  totalPrice;
     }
 }

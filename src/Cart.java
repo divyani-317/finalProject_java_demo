@@ -14,16 +14,26 @@ public class Cart {
 
     // Set method
     public void addToCart(Pizza pizza) {
-        items.add(pizza);
-        System.out.println(pizza.getName() + " added to your cart.");
+       try {
+           items.add(pizza);
+           System.out.println(pizza.getName() + " added to your cart.");
+       }
+       catch(Exception ex){
+           System.out.println(ex.getMessage());
+       }
     }
 
     public void displayCart() {
-        System.out.println("\nYour Cart:");
-        for (Pizza pizza : items) {
-            System.out.println(pizza.getName() + " - "+currencySymbol+"" + pizza.getPrice());
+        try {
+            System.out.println("\nYour Cart:");
+            for (Pizza pizza : items) {
+                System.out.println(pizza.getName() + " - "+currencySymbol+"" + pizza.getPrice());
+            }
+            System.out.println("Total: "+currencySymbol+"" + calculateCartTotal());
         }
-        System.out.println("Total: "+currencySymbol+"" + calculateCartTotal());
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     public void clearCart() {
@@ -32,10 +42,14 @@ public class Cart {
 
     public double calculateCartTotal() {
         double totalPrice = 0.0;
-        for (Pizza pizza : items) {
-            totalPrice += pizza.getPrice();
+        try {
+            for (Pizza pizza : items) {
+                totalPrice += pizza.getPrice();
+            }
         }
-        //return items.stream().mapToDouble(Pizza::getPrice).sum();
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
         return  totalPrice;
     }
 
