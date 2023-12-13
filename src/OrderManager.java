@@ -1,4 +1,5 @@
 public class OrderManager {
+    final String currencySymbol = "$";
     public void checkoutOrder(User user) {
         try {
             if (user.getCart().isEmpty()) {
@@ -8,7 +9,7 @@ public class OrderManager {
 
             Order order = new Order(user.getCart().getItems());
             System.out.println("\nOrder Placed Successfully!");
-            System.out.println("Total Amount: $" + order.getTotalAmount());
+            System.out.println("Total Amount: " + currencySymbol + order.getTotalAmount());
 
             user.getCart().clearCart();
             user.getCart().displayCart();
