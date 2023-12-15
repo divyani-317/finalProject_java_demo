@@ -22,10 +22,9 @@ public class PizzaShop {
        try {
            System.out.println("Welcome to the Pizza Management System - PMS!");
            menu.displayMenu();
-           System.out.println("6. Customize pizza");
-           System.out.println("7. View Cart");
-           System.out.println("8. Checkout");
-           System.out.println("9. Exit");
+           System.out.println("6. View Cart");
+           System.out.println("7. Checkout");
+           System.out.println("8. Exit");
 
            while (true) {
                mainMenuHandler();
@@ -44,10 +43,10 @@ public class PizzaShop {
             boolean selctionCompleted = false;
 
             switch (userChoice) {
-                case 1: case 2: case 3: case 4: case 5:
+                case 1: case 2: case 3: case 4:
                     menu.processMenuChoice(userChoice, currentUser.getCart());
                     break;
-                case 6:
+                case 5:
                     CustomPizza customPizza = new CustomPizza();
                     while(true) {
                         System.out.println("Select Toppings:");
@@ -87,7 +86,7 @@ public class PizzaShop {
                     }
 
                     break;
-                case 7:
+                case 6:
                     currentUser.getCart().displayCart();
                     System.out.println("Would you like to remove any pizza? Y/N");
                     Scanner _scanner = new Scanner(System.in);
@@ -98,10 +97,10 @@ public class PizzaShop {
                         menu.RemoveSelectedPizza(selectedPizza, currentUser.getCart());
                     }
                     break;
-                case 8:
+                case 7:
                     orderManager.checkoutOrder(currentUser);
                     break;
-                case 9:
+                case 8:
                     System.out.println("Thank you for visiting. Goodbye!");
                     System.exit(0);
                 default:

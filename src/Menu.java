@@ -27,7 +27,7 @@ public class Menu {
             System.out.println("\n Our Menu:");
             int index = 1;
             for (Pizza pizza : menuItems) {
-                System.out.println(index + ". " + pizza.getName() + " - $" + pizza.getPrice());
+                System.out.println(index + ". " + pizza.getName() + (pizza instanceof CustomPizza ? "(Basic Price)" : "") + " - $" + pizza.getPrice());
                 index++;
             }
         }
